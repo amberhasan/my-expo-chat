@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import MyButton from "../components/MyButton";
+import MyTextInput from "../components/MyTextInput";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -27,33 +28,20 @@ const Login = (props) => {
         padding: 25,
       }}
     >
-      <TextInput
-        placeholder="Enter your email"
+      <MyTextInput
+        placeholder="Enter your username"
         onChangeText={(text) => {
           setEmail(text);
         }}
-        style={{
-          height: 40,
-          width: "100%",
-          borderWidth: 0.5,
-          paddingHorizontal: 10, //applied to all 4 sides
-          borderRadius: 15,
-        }}
       />
-      <TextInput
+      <MyTextInput
         placeholder="Enter your password"
         onChangeText={(text) => {
           setPassword(text);
         }}
-        style={{
-          height: 40,
-          width: "100%",
-          borderWidth: 0.5,
-          paddingHorizontal: 10, //applied to all 4 sides
-          borderRadius: 15,
-          marginTop: 15,
-        }}
+        style={{ marginTop: 15 }}
       />
+
       <MyButton
         title="Login"
         onPress={onLoginPress}
