@@ -1,9 +1,36 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 const LeftMessage = () => {
   return (
-    <View style={{ backgroundColor: "green", height: 40 }}>
-      <Text>LeftMessage</Text>
+    <View
+      style={{
+        flex: 0,
+        backgroundColor: "gray",
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: 5,
+        padding: 10,
+      }}
+    >
+      <Image
+        source={{
+          uri: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+        }}
+        style={{
+          height: 35,
+          width: 35,
+          borderRadius: 35 / 2,
+        }}
+      />
+      <Text
+        style={{
+          fontSize: 16,
+          color: "black",
+          paddingHorizontal: 10,
+        }}
+      >
+        askjdhaks jdh kjashd kjashdk askjdh aksjdhkasj dhkashdhaskdjhaks d
+      </Text>
     </View>
   );
 };
