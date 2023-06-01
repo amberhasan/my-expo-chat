@@ -34,7 +34,7 @@ const Login = (props) => {
         padding: 25,
       }}
     >
-      <View style={{ height: 50 }}>
+      <View style={{ height: 50, alignSelf: "stretch" }}>
         <MyTextInput
           placeholder="Enter your username"
           onChangeText={(text) => {
@@ -43,17 +43,16 @@ const Login = (props) => {
           secureTextEntry={false}
         />
       </View>
-      <View style={{ height: 50 }}>
+      <View style={{ height: 50, alignSelf: "stretch", marginTop: 15 }}>
         <MyTextInput
           placeholder="Enter your password"
           onChangeText={(text) => {
             setPassword(text);
           }}
-          style={{ marginTop: 15 }}
           secureTextEntry={true}
         />
       </View>
-      <View style={{ height: 50, alignSelf: "stretch" }}>
+      <View style={{ height: 70, alignSelf: "stretch" }}>
         <MyButton
           title="Login"
           onPress={onLoginPress}
@@ -65,7 +64,7 @@ const Login = (props) => {
           }}
         />
       </View>
-      <View style={{ height: 50, alignSelf: "stretch" }}>
+      <View style={{ height: 70, alignSelf: "stretch" }}>
         <MyButton title="Register" onPress={onRegisterPress} />
       </View>
     </View>
