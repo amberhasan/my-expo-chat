@@ -2,23 +2,40 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import MyButton from "../components/MyButton";
 import MyTextInput from "../components/MyTextInput";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth();
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLoginPress = () => {
+  const onLoginPress = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log("Here is the user " + JSON.stringify(user));
+      props.navigation.navigate("Inbox");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("We got an error " + error);
+    }
+
     // Email validation
     // Password Validation
     // register the user
     // navigate to home
-    console.log("LOgin");
     // if (!email.includes("@") || !email.includes(".com")) {
     //   alert("Please enter a valid email");
     // } else if (password.length < 6) {
     //   alert("Please enter a password at least length 6");
     // } else {
-    props.navigation.navigate("Inbox");
+    // props.navigation.navigate("Inbox");
     // }
   };
   const onRegisterPress = () => {
