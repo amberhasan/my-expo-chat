@@ -8,18 +8,18 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
 
   const onLoginPress = () => {
-    // Email valdation
+    // Email validation
     // Password Validation
     // register the user
     // navigate to home
     console.log("LOgin");
-    if (!email.includes("@") || !email.includes(".com")) {
-      alert("Please enter a valid email");
-    } else if (password.length < 6) {
-      alert("Please enter a password at least length 6");
-    } else {
-      props.navigation.navigate("Inbox");
-    }
+    // if (!email.includes("@") || !email.includes(".com")) {
+    //   alert("Please enter a valid email");
+    // } else if (password.length < 6) {
+    //   alert("Please enter a password at least length 6");
+    // } else {
+    props.navigation.navigate("Inbox");
+    // }
   };
   const onRegisterPress = () => {
     props.navigation.navigate("Register");
@@ -40,6 +40,7 @@ const Login = (props) => {
           onChangeText={(text) => {
             setEmail(text);
           }}
+          secureTextEntry={false}
         />
       </View>
       <View style={{ height: 50 }}>
@@ -48,8 +49,8 @@ const Login = (props) => {
           onChangeText={(text) => {
             setPassword(text);
           }}
-          // secureTextEntry
           style={{ marginTop: 15 }}
+          secureTextEntry={true}
         />
       </View>
       <View style={{ height: 50, alignSelf: "stretch" }}>

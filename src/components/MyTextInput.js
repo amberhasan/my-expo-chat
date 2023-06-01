@@ -6,6 +6,7 @@ const MyTextInput = (props) => {
     <TextInput
       placeholder={props.placeholder}
       onChangeText={props.onChangeText}
+      secureTextEntry={props.secureTextEntry}
       style={{
         height: 40,
         flex: 1,
