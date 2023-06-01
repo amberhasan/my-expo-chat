@@ -13,7 +13,13 @@ const Login = (props) => {
     // register the user
     // navigate to home
     console.log("LOgin");
-    props.navigation.navigate("Inbox");
+    if (!email.includes("@") || !email.includes(".com")) {
+      alert("Please enter a valid email");
+    } else if (password.length < 6) {
+      alert("Please enter a password at least length 6");
+    } else {
+      props.navigation.navigate("Inbox");
+    }
   };
   const onRegisterPress = () => {
     props.navigation.navigate("Register");
@@ -28,31 +34,39 @@ const Login = (props) => {
         padding: 25,
       }}
     >
-      <MyTextInput
-        placeholder="Enter your username"
-        onChangeText={(text) => {
-          setEmail(text);
-        }}
-      />
-      <MyTextInput
-        placeholder="Enter your password"
-        onChangeText={(text) => {
-          setPassword(text);
-        }}
-        style={{ marginTop: 15 }}
-      />
-
-      <MyButton
-        title="Login"
-        onPress={onLoginPress}
-        style={{
-          backgroundColor: "yellow",
-        }}
-        textStyle={{
-          color: "black",
-        }}
-      />
-      <MyButton title="Register" onPress={onRegisterPress} />
+      <View style={{ height: 50 }}>
+        <MyTextInput
+          placeholder="Enter your username"
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
+      </View>
+      <View style={{ height: 50 }}>
+        <MyTextInput
+          placeholder="Enter your password"
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
+          // secureTextEntry
+          style={{ marginTop: 15 }}
+        />
+      </View>
+      <View style={{ height: 50, alignSelf: "stretch" }}>
+        <MyButton
+          title="Login"
+          onPress={onLoginPress}
+          style={{
+            backgroundColor: "yellow",
+          }}
+          textStyle={{
+            color: "black",
+          }}
+        />
+      </View>
+      <View style={{ height: 50, alignSelf: "stretch" }}>
+        <MyButton title="Register" onPress={onRegisterPress} />
+      </View>
     </View>
   );
 };

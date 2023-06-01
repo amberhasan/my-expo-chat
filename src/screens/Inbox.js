@@ -1,24 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
+import InboxItem from "../components/InboxItem";
 
-const Inbox = () => {
+const Inbox = (props) => {
   return (
-    <View style={{ flex: 1, backgroundColor: "red" }}>
-      <View
-        style={{
-          height: 80,
-          width: "100%",
-          backgroundColor: "yellow",
-          flexDirection: "row",
+    <View style={{ flex: 1 }}>
+      <InboxItem
+        onPress={() => {
+          props.navigation.navigate("Chat");
         }}
-      >
-        <View style={{ backgroundColor: "blue", width: "20%" }}>
-          <Text>Left</Text>
-        </View>
-        <View style={{ backgroundColor: "purple", width: "80%" }}>
-          <Text>Right</Text>
-        </View>
-      </View>
+      />
     </View>
   );
 };

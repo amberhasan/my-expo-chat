@@ -8,7 +8,7 @@ const MyTextInput = (props) => {
       onChangeText={props.onChangeText}
       style={{
         height: 40,
-        width: "100%",
+        flex: 1,
         borderWidth: 0.5,
         paddingHorizontal: 10, //applied to all 4 sides
         borderRadius: 15,

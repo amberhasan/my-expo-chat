@@ -7,7 +7,7 @@ const MyButton = (props) => {
       onPress={props.onPress}
       style={{
         backgroundColor: "blue",
-        width: "100%",
+        flex: 1,
         height: 40,
         justifyContent: "center",
         alignItems: "center",
