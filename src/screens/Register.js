@@ -24,10 +24,6 @@ const Register = () => {
       const errorMessage = error.message;
       console.log("Here is the error " + error);
     }
-    // Email valdation
-    // Password Validation
-    // register the user
-    // navigate to home
     console.log("Register Press");
   };
 

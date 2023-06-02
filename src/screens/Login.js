@@ -25,18 +25,6 @@ const Login = (props) => {
       const errorMessage = error.message;
       console.log("We got an error " + error);
     }
-
-    // Email validation
-    // Password Validation
-    // register the user
-    // navigate to home
-    // if (!email.includes("@") || !email.includes(".com")) {
-    //   alert("Please enter a valid email");
-    // } else if (password.length < 6) {
-    //   alert("Please enter a password at least length 6");
-    // } else {
-    // props.navigation.navigate("Inbox");
-    // }
   };
   const onRegisterPress = () => {
     props.navigation.navigate("Register");

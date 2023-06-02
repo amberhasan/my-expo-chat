@@ -11,7 +11,7 @@ const MyTextInput = (props) => {
         height: 40,
         flex: 1,
         borderWidth: 0.5,
-        paddingHorizontal: 10, //applied to all 4 sides
+        paddingHorizontal: 10,
         borderRadius: 15,
         ...props.style,
       }}
