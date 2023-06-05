@@ -3,12 +3,21 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import MyButton from "../components/MyButton";
 import MyTextInput from "../components/MyTextInput";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 
 const auth = getAuth();
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function writeUserData(userId, email, password) {
+    const db = getDatabase();
+    set(ref(db, "users/" + userId), {
+      email,
+      password,
+    });
+  }
 
   const onRegisterPress = async () => {
     try {
@@ -18,6 +27,7 @@ const Register = () => {
         password
       );
       const user = userCredential.user;
+      writeUserData(user.uid, email, password);
       console.log("Here is the user " + user);
     } catch (error) {
       const errorCode = error.code;

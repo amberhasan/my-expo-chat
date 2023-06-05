@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -13,6 +14,7 @@ const firebaseConfig = {
   storageBucket: "my-expo-chat-5c27e.appspot.com",
   messagingSenderId: "872753577754",
   appId: "1:872753577754:web:a256fe32f04120942776a3",
+  databaseURL: "https://my-expo-chat-5c27e-default-rtdb.firebaseio.com/",
 };
 
 // Initialize Firebase
@@ -20,5 +22,8 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
 
 export default app;

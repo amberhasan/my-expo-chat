@@ -7,8 +7,8 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth();
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("amber.hasan@gmail.comm");
+  const [password, setPassword] = useState("password");
 
   const onLoginPress = async () => {
     try {
