@@ -6,32 +6,37 @@ import { getDatabase, ref, onValue } from "firebase/database";
 const Users = (props) => {
   let [userList, setUserList] = useState([]);
 
+  const transformData = (data) =>
+    Object.keys(data).map((key) => ({ ...data[key], uid: key }));
+
   useEffect(() => {
+    // get data from db
     const db = getDatabase();
     const userRef = ref(db, "users/");
     onValue(userRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log("------data", data);
-      userList.push(data);
-      setUserList([data]);
-      console.log("userList", userList);
+      let data = snapshot.val();
+      // transform data
+      // set it to state
+      if (data != null || data != undefined) {
+        setUserList(transformData(data));
+      }
     });
   }, []);
-
-  //Transform the data to have the UID inside the object.
-  userList = userList.map((obj) => {
-    const uid = Object.keys(obj)[0];
-    const innerObject = obj[uid];
-    return { uid, ...innerObject };
-  });
-
-  console.log("updated userList", userList);
 
   return (
     <View style={{ flex: 1 }}>
       <FlatList
         data={userList}
-        renderItem={({ item }) => <UserItem data={item} />}
+        renderItem={({ item }) => (
+          <UserItem
+            data={item}
+            onPress={() => {
+              props.navigation.navigate("Chat", {
+                user: item,
+              });
+            }}
+          />
+        )}
       />
     </View>
   );

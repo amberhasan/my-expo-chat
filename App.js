@@ -7,9 +7,11 @@ import Inbox from "./src/screens/Inbox";
 import Chat from "./src/screens/Chat";
 import Register from "./src/screens/Register";
 import Users from "./src/screens/Users";
-import { Button } from "react-native";
+import { View, Button } from "react-native";
+import { getAuth, signOut } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
+const auth = getAuth();
 
 export default function App(props) {
   return (
@@ -22,12 +24,25 @@ export default function App(props) {
           component={Inbox}
           options={(props) => ({
             headerRight: () => (
-              <Button
-                title="New"
-                onPress={() => {
-                  props.navigation.navigate("Users");
-                }}
-              />
+              <View style={{ flexDirection: "row", backgroundColor: "pink" }}>
+                <Button
+                  style={{ margin: 10, backgroundColor: "red" }}
+                  title="Log out"
+                  onPress={() => {
+                    signOut(auth).then(() => {
+                      console.log("Signed out successfully");
+                      props.navigation.navigate("Login");
+                    });
+                  }}
+                />
+                <Button
+                  style={{ margin: 10, backgroundColor: "purple" }}
+                  title="New"
+                  onPress={() => {
+                    props.navigation.navigate("Users");
+                  }}
+                />
+              </View>
             ),
           })}
         />

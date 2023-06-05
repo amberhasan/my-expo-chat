@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 import MyButton from "../components/MyButton";
 import MyTextInput from "../components/MyTextInput";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -7,8 +13,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth();
 
 const Login = (props) => {
-  const [email, setEmail] = useState("amber.hasan@gmail.comm");
-  const [password, setPassword] = useState("password");
+  let [email, setEmail] = useState(
+    Platform.OS === "ios" ? "amber.hasan@gmail.comm" : "xyz@test.com"
+  );
+  let [password, setPassword] = useState("password");
 
   const onLoginPress = async () => {
     try {
@@ -41,6 +49,7 @@ const Login = (props) => {
     >
       <View style={{ height: 50, alignSelf: "stretch" }}>
         <MyTextInput
+          value={email}
           placeholder="Enter your username"
           onChangeText={(text) => {
             setEmail(text);
@@ -50,6 +59,7 @@ const Login = (props) => {
       </View>
       <View style={{ height: 50, alignSelf: "stretch", marginTop: 15 }}>
         <MyTextInput
+          value={password}
           placeholder="Enter your password"
           onChangeText={(text) => {
             setPassword(text);

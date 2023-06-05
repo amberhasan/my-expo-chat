@@ -4,6 +4,7 @@ import { TouchableOpacity, TextInput } from "react-native";
 const MyTextInput = (props) => {
   return (
     <TextInput
+      value={props.value}
       placeholder={props.placeholder}
       onChangeText={props.onChangeText}
       secureTextEntry={props.secureTextEntry}
