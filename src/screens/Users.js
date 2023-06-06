@@ -2,12 +2,23 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Image, FlatList } from "react-native";
 import UserItem from "../components/UserItem";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { getAuth } from "firebase/auth";
 
 const Users = (props) => {
-  let [userList, setUserList] = useState([]);
+  const auth = getAuth();
+  const currentUser = auth.currentUser;
+  const [userList, setUserList] = useState([]);
 
-  const transformData = (data) =>
-    Object.keys(data).map((key) => ({ ...data[key], uid: key }));
+  const transformData = (data) => {
+    return Object.keys(data)
+      .map((key) => {
+        const userData = data[key];
+        if (userData && key !== currentUser.uid) {
+          return { ...userData, uid: key };
+        }
+      })
+      .filter(Boolean);
+  };
 
   useEffect(() => {
     // get data from db
@@ -16,9 +27,11 @@ const Users = (props) => {
     onValue(userRef, (snapshot) => {
       let data = snapshot.val();
       // transform data
+      data = transformData(data);
+
       // set it to state
       if (data != null || data != undefined) {
-        setUserList(transformData(data));
+        setUserList(data);
       }
     });
   }, []);
