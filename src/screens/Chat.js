@@ -63,14 +63,19 @@ const Chat = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: "orange" }}>
-        {chat.map((_msg, index) => {
-          if (currentUser.uid === _msg.sender.uid) {
-            return <RightMessage key={index} data={_msg} />;
-          } else {
-            return <LeftMessage key={index} data={_msg} />;
-          }
-        })}
+        <FlatList
+          data={chat}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => {
+            if (currentUser.uid === item.sender.uid) {
+              return <RightMessage data={item} />;
+            } else {
+              return <LeftMessage data={item} />;
+            }
+          }}
+        />
       </View>
+
       <MessageComposer value={msg} onChangeText={setMsg} onSend={onSend} />
     </View>
   );
