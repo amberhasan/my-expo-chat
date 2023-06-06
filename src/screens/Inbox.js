@@ -5,11 +5,7 @@ import InboxItem from "../components/InboxItem";
 const Inbox = (props) => {
   return (
     <View style={{ flex: 1 }}>
-      <InboxItem
-        onPress={() => {
-          props.navigation.navigate("Chat");
-        }}
-      />
+      <Text>No chat</Text>
     </View>
   );
 };

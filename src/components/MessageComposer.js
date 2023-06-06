@@ -15,13 +15,14 @@ const MessageComposer = (props) => {
       }}
     >
       <MyTextInput
+        value={props.value}
         placeholder="Enter your message"
         onChangeText={props.onChangeText}
       />
       <View style={{ flex: 0.3 }}>
         <MyButton
           title="send"
-          onPress={() => {}}
+          onPress={props.onSend}
           style={{
             borderRadius: 100,
           }}

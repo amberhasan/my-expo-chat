@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-const LeftMessage = () => {
+const LeftMessage = (props) => {
   return (
     <View
       style={{
@@ -29,7 +29,7 @@ const LeftMessage = () => {
           paddingHorizontal: 10,
         }}
       >
-        askjdhaks jdh kjashd kjashdk askjdh aksjdhkasj dhkashdhaskdjhaks d
+        {props.data.message}
       </Text>
     </View>
   );

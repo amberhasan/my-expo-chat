@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-const RightMessage = () => {
+const RightMessage = (props) => {
   return (
     <View
       style={{
@@ -19,7 +19,7 @@ const RightMessage = () => {
           paddingHorizontal: 10,
         }}
       >
-        RightMessage
+        {props.data.message}
       </Text>
       <Image
         source={{
