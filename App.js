@@ -24,24 +24,26 @@ export default function App(props) {
           component={Inbox}
           options={(props) => ({
             headerRight: () => (
-              <View style={{ flexDirection: "row", backgroundColor: "pink" }}>
-                <Button
-                  style={{ margin: 10, backgroundColor: "red" }}
-                  title="Log out"
-                  onPress={() => {
-                    signOut(auth).then(() => {
-                      console.log("Signed out successfully");
-                      props.navigation.navigate("Login");
-                    });
-                  }}
-                />
-                <Button
-                  style={{ margin: 10, backgroundColor: "purple" }}
-                  title="New"
-                  onPress={() => {
-                    props.navigation.navigate("Users");
-                  }}
-                />
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ marginRight: 10 }}>
+                  <Button
+                    title="Log out"
+                    onPress={() => {
+                      signOut(auth).then(() => {
+                        console.log("Signed out successfully");
+                        props.navigation.navigate("Login");
+                      });
+                    }}
+                  />
+                </View>
+                <View>
+                  <Button
+                    title="New"
+                    onPress={() => {
+                      props.navigation.navigate("Users");
+                    }}
+                  />
+                </View>
               </View>
             ),
           })}
