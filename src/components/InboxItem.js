@@ -38,7 +38,7 @@ const InboxItem = (props) => {
           paddingHorizontal: 15,
         }}
       >
-        <Text>Safdar</Text>
+        <Text>{props.email}</Text>
         <Text>Hey, how are you?</Text>
       </View>
     </TouchableOpacity>
